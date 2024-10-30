@@ -26,7 +26,7 @@ const About = () => {
       <div className="animate-section text-center mb-16">
         <h1 className="text-4xl font-bold mb-6">About Modern Shop</h1>
         <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-          We're passionate about bringing you the finest selection of premium products
+          We're passionate about bringing you the finest selection of premium bespoke accessories from the whole of Africa
           while providing an exceptional shopping experience.
         </p>
       </div>
@@ -43,8 +43,8 @@ const About = () => {
         <div className="flex flex-col justify-center">
           <h2 className="text-3xl font-bold mb-6">Our Story</h2>
           <p className="text-gray-600 mb-4">
-            Founded in 2024, Modern Shop began with a simple mission: to provide
-            high-quality products that enhance people's lives. We carefully curate
+            Founded in 2024, KaeMart began with a simple mission: to provide
+            high-quality African accesories. We carefully curate
             each item in our collection, ensuring it meets our strict standards for
             quality and design.
           </p>
