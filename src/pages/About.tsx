@@ -94,7 +94,7 @@ const About = () => {
           <div className="flex flex-col items-center text-center">
             <Mail size={32} className="text-blue-600 mb-4" />
             <h3 className="text-lg font-semibold mb-2">Email Us</h3>
-            <p className="text-gray-600">info@modernshop.com</p>
+            <p className="text-gray-600">info@kaemart.com</p>
           </div>
           <div className="flex flex-col items-center text-center">
             <Phone size={32} className="text-blue-600 mb-4" />
