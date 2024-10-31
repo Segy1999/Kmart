@@ -1,10 +1,37 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { Menu, Search, ShoppingCart, X } from 'lucide-react';
+import { useShop } from '../context/ShopContext';
+import { gsap } from 'gsap';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
+  const { state } = useShop();
+  const cartItemCount = state.cart.reduce((sum, item) => sum + item.quantity, 0);
+  const cartIconRef = useRef(null);
+  const cartBadgeRef = useRef(null);
+
+  useEffect(() => {
+    if (cartItemCount > 0) {
+      const ctx = gsap.context(() => {
+        if (cartIconRef.current) {
+          gsap.fromTo(cartIconRef.current,
+            { scale: 1.2 },
+            { scale: 1, duration: 0.3, ease: 'elastic.out(1, 0.3)' }
+          );
+        }
+        if (cartBadgeRef.current) {
+          gsap.fromTo(cartBadgeRef.current,
+            { scale: 0 },
+            { scale: 1, duration: 0.3, ease: 'back.out(2)' }
+          );
+        }
+      });
+
+      return () => ctx.revert();
+    }
+  }, [cartItemCount]);
 
   return (
     <header className="bg-white shadow-md fixed w-full top-0 z-50">
@@ -39,8 +66,18 @@ const Header = () => {
             </button>
 
             {/* Cart */}
-            <Link to="/cart" className="p-2 hover:bg-gray-100 rounded-full transition-colors">
-              <ShoppingCart size={20} />
+            <Link to="/cart" className="p-2 hover:bg-gray-100 rounded-full transition-colors relative">
+              <div ref={cartIconRef}>
+                <ShoppingCart size={20} />
+                {cartItemCount > 0 && (
+                  <span 
+                    ref={cartBadgeRef}
+                    className="absolute -top-1 -right-1 bg-blue-600 text-white text-xs w-5 h-5 flex items-center justify-center rounded-full"
+                  >
+                    {cartItemCount}
+                  </span>
+                )}
+              </div>
             </Link>
 
             {/* Mobile Menu Button */}
