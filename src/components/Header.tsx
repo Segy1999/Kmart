@@ -43,7 +43,7 @@ const Header = () => {
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex space-x-8">
+          <nav className="bebas-neue-regular text-2xl hidden md:flex space-x-8">
             <Link to="/" className="text-gray-700 hover:text-gray-900 transition-colors">
               Home
             </Link>

@@ -11,7 +11,7 @@ const Home = () => {
 
   useEffect(() => {
     if (typewriterRef.current) {
-      new Typewriter(typewriterRef.current, ['Welcome to KaeMart', 'Your home for bespoke African shopping', 'Shop with Confidence'], 3000);
+      new Typewriter(typewriterRef.current, ['Welcome to KaeMart', 'Your home for bespoke African accesories', 'Shop with Confidence'], 3000);
     }
 
     if (heroRef.current) {
@@ -36,9 +36,9 @@ const Home = () => {
         <div className="text-center">
           <div
             ref={typewriterRef}
-            className="text-4xl md:text-6xl font-bold mb-6 h-20 text-white"
+            className="anton-regular text-4xl md:text-6xl font-bold mb-6 h-20 text-white"
           ></div>
-          <p className="text-xl mb-8 max-w-2xl mx-auto px-4 text-white">
+          <p className="bebas-neue-regular text-xl mb-8 max-w-2xl mx-auto px-4 text-white">
             Discover our curated collection of premium products designed to enhance
             your lifestyle.
           </p>
@@ -54,10 +54,10 @@ const Home = () => {
       {/* Featured Products Section */}
       <section id="featured" className="py-16 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold text-center mb-12 text-black">
+          <h2 className="bebas-neue-regular text-3xl font-bold text-center mb-12 text-black">
             Featured Products
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="roboto-medium grid grid-cols-1 md:grid-cols-3 gap-8">
             {featuredProducts.map((product) => (
               <ProductCard key={product.id} {...product} />
             ))}
