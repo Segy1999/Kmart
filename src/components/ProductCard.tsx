@@ -1,8 +1,11 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, lazy, Suspense } from 'react';
 import { useShop } from '../context/ShopContext';
 import { ShoppingCart, Eye } from 'lucide-react';
-import ProductModal from './ProductModal';
+import { LazyLoadImage } from 'react-lazy-load-image-component';
+import 'react-lazy-load-image-component/src/effects/blur.css';
 import { gsap } from 'gsap';
+
+const ProductModal = lazy(() => import('./ProductModal'));
 
 interface ProductCardProps {
   id: number;
@@ -42,7 +45,14 @@ const ProductCard: React.FC<ProductCardProps> = (props) => {
   return (
     <>
       <div className="bg-white rounded-lg shadow-md overflow-hidden">
-        <img src={props.image} alt={props.name} className="w-full h-64 object-cover" />
+        <LazyLoadImage
+          src={props.image}
+          alt={props.name}
+          effect="blur"
+          className="w-full h-64 object-cover"
+          width="100%"
+          height="256px"
+        />
         <div className="p-6">
           <div className="flex justify-between items-start mb-2">
             <h3 className="text-xl font-semibold">{props.name}</h3>
@@ -74,7 +84,9 @@ const ProductCard: React.FC<ProductCardProps> = (props) => {
         </div>
       </div>
       {isModalOpen && (
-        <ProductModal product={props} onClose={() => setIsModalOpen(false)} />
+        <Suspense fallback={<div>Loading...</div>}>
+          <ProductModal product={props} onClose={() => setIsModalOpen(false)} />
+        </Suspense>
       )}
     </>
   );

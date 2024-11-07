@@ -93,7 +93,6 @@ const ProductModal: React.FC<ProductModalProps> = ({ product, onClose }) => {
               }
               setAddedToCart(true);
               
-              // Success animation
               gsap.to(addToCartButtonRef.current, {
                 backgroundColor: '#22c55e',
                 duration: 0.3,

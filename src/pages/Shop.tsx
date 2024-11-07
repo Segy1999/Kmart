@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, lazy, Suspense } from 'react';
 import { useShop } from '../context/ShopContext';
 import ProductCard from '../components/ProductCard';
 import ProductFilter from '../components/ProductFilter';
 import { gsap } from 'gsap';
 
-const Shop = () => {
+const Shop: React.FC = () => {
   const { state } = useShop();
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [sortBy, setSortBy] = useState('default');
